@@ -13,12 +13,6 @@ export class Book {
   @Generated('uuid')
   id: string;
 
-  @CreateDateColumn()
-  created_at: Date;
-
-  @DeleteDateColumn()
-  deleted_at: Date;
-
   @Column()
   title: string;
 
@@ -27,4 +21,10 @@ export class Book {
 
   @Column()
   year: string;
+
+  @CreateDateColumn()
+  created_at: Date;
+
+  @DeleteDateColumn()
+  deleted_at: Date;
 }

@@ -19,15 +19,25 @@ export class BooksService {
     return this.booksRepository.find();
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} book`;
+  // findOne(id: string) {
+  //   return this.booksRepository.findOne({ where: { id } });
+  // }
+
+  findByTitle(title: string) {
+    return this.booksRepository.findOne({ where: { title } });
   }
 
-  update(id: number, updateBookDto: UpdateBookDto) {
-    return `This action updates a #${id} book`;
+  async update(title: string, updateBookDto: UpdateBookDto) {
+    const book = await this.findByTitle(title);
+    book.title = updateBookDto.title;
+    book.author = updateBookDto.author;
+    book.year = updateBookDto.year;
+
+    return this.booksRepository.save(book);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} book`;
+  async remove(title: string) {
+    const book = await this.findByTitle(title);
+    return this.booksRepository.remove(book);
   }
 }
