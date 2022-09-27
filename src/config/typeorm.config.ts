@@ -5,7 +5,6 @@ export const TypeOrmConfig: TypeOrmModuleOptions = {
   host: 'localhost',
   port: 5432,
   username: 'postgres',
-  password: 'wartegaril24',
   database: 'books_api',
   entities: [__dirname + '/../**/*.entity.{ts,js}'],
   synchronize: true,
